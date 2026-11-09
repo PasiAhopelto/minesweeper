@@ -1,0 +1,8 @@
+target/
+frontend/node/
+frontend/node_modules/
+frontend/dist/
+*.iml
+.idea/
+.vscode/
+*.tsbuildinfo

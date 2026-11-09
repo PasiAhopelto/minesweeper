@@ -1,0 +1,21 @@
+package com.example.minesweeper.web;
+
+import com.example.minesweeper.game.GameNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class ApiExceptionHandler {
+
+    @ExceptionHandler(GameNotFoundException.class)
+    ProblemDetail notFound(GameNotFoundException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    ProblemDetail badRequest(IllegalArgumentException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+}
